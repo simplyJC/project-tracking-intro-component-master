@@ -1,0 +1,24 @@
+@use '../base/fonts' as *;
+@use '../abstracts/variable' as *;
+body {
+  width: 100%;
+  font-family: $ff-primary-barlow;
+  font-size: 1.125rem;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+}
+.corner-background {
+  background-color: $clr-neutral-light-blue;
+  position: absolute;
+  width: 50vw;
+  height: 55vh;
+  top: 0;
+  left: 50%;
+  border-bottom-left-radius: 4rem;
+  z-index: -1;
+}
+main {
+  display: grid;
+  place-items: center;
+}

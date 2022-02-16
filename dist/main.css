@@ -1,0 +1,397 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@400;700&display=swap");
+/* CSS RESET LINK: https://piccalil.li/blog/a-modern-css-reset/ */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for inputs and buttons */
+button {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+*::before,
+*::after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+body {
+  width: 100%;
+  font-family: "Barlow", sans-serif;
+  font-size: 1.125rem;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+}
+
+.corner-background {
+  background-color: #eef3f6;
+  position: absolute;
+  width: 50vw;
+  height: 55vh;
+  top: 0;
+  left: 50%;
+  border-bottom-left-radius: 4rem;
+  z-index: -1;
+}
+
+main {
+  display: grid;
+  place-items: center;
+}
+
+.header-container {
+  margin: 0 2rem;
+  padding: 1rem 0;
+}
+@media (min-width: 900px) {
+  .header-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1rem 1rem;
+  }
+}
+
+.nav {
+  position: relative;
+  padding: 1rem 0;
+  text-align: center;
+  z-index: 2;
+}
+@media (min-width: 900px) {
+  .nav {
+    display: flex;
+  }
+}
+.nav__open {
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  display: block;
+}
+.nav__open--hide {
+  display: none;
+}
+@media (min-width: 900px) {
+  .nav__open {
+    display: none;
+  }
+}
+.nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  display: none;
+}
+.nav__close--show {
+  display: block;
+}
+@media (min-width: 900px) {
+  .nav__close {
+    display: none;
+  }
+}
+.nav__lists {
+  list-style: none;
+  background: white;
+  margin: 4rem 0;
+  text-transform: uppercase;
+  font-family: "Barlow condensed", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  box-shadow: 0px 0px 13px 4px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+}
+@media (min-width: 900px) {
+  .nav__lists {
+    opacity: 1;
+    flex-direction: row;
+    position: relative;
+    margin: 0;
+    background: none;
+    box-shadow: none;
+    justify-content: flex-end;
+    gap: 1.5rem;
+  }
+}
+.nav__lists--active {
+  display: block;
+  -webkit-animation: drop 0.8s ease-in;
+          animation: drop 0.8s ease-in;
+  opacity: 1;
+}
+.nav__lists--hide {
+  -webkit-animation: go-up 0.8s ease-out;
+          animation: go-up 0.8s ease-out;
+}
+.nav__item {
+  padding: 0.7rem 0;
+}
+@media (min-width: 900px) {
+  .nav__item {
+    padding: 0;
+  }
+}
+.nav__item:nth-child(3) {
+  padding-bottom: 1rem;
+}
+@media (min-width: 900px) {
+  .nav__item:nth-child(3) {
+    padding: 0;
+  }
+}
+.nav__link {
+  text-decoration: none;
+  color: #242942;
+  position: relative;
+}
+.nav__link::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  background-color: #ff5c5c;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.nav__link:hover::before {
+  transform: scaleX(1);
+}
+.nav__logo {
+  width: 1.5rem;
+}
+
+.button-login {
+  border-top: 1px solid #eef3f6;
+  padding: 1.4rem;
+  position: relative;
+}
+.button-login-link {
+  color: #5b5f71;
+}
+@media (min-width: 900px) {
+  .button-login {
+    padding: 0;
+    margin: 0 0 0 1rem;
+  }
+  .button-login::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    top: 0.6rem;
+    right: 4rem;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #5b5f71;
+  }
+}
+
+@-webkit-keyframes drop {
+  0% {
+    transform: translateY(-200%);
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(20%);
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(-200%);
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(20%);
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes go-up {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(20%);
+  }
+  100% {
+    transform: translateY(-200%);
+    opacity: 0;
+  }
+}
+@keyframes go-up {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(20%);
+  }
+  100% {
+    transform: translateY(-200%);
+    opacity: 0;
+  }
+}
+.hero__button-preview, .hero__button-demo {
+  font-family: "Barlow condensed", sans-serif;
+  border-style: none;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  border-radius: 0.3rem;
+}
+
+.hero {
+  padding: 2rem 0;
+}
+@media (min-width: 900px) {
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 80rem;
+  }
+}
+.hero__image {
+  filter: drop-shadow(0px 23px 13px rgba(0, 0, 0, 0.15));
+}
+.hero__image-container {
+  width: 120%;
+}
+@media (min-width: 900px) {
+  .hero__image-container {
+    grid-column: 2/3;
+    transform: translateX(5rem);
+  }
+}
+.hero span:nth-child(1) {
+  background: #242942;
+  text-transform: uppercase;
+  color: white;
+  border-radius: 12rem;
+  font-size: 0.9rem;
+  font-family: "Barlow condensed", sans-serif;
+  padding: 0.1rem 0.6rem;
+}
+.hero span:nth-child(2) {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.2rem;
+  font-family: "Barlow condensed", sans-serif;
+  color: #5b5f71;
+  padding: 0.5rem;
+}
+.hero__title {
+  font-family: "Barlow condensed", sans-serif;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: clamp(2.5rem, 8vw, 4rem);
+  padding: 1rem 0;
+}
+.hero__left-container {
+  padding: 3rem 1rem;
+}
+@media (min-width: 900px) {
+  .hero__left-container {
+    grid-row: 1;
+  }
+}
+.hero__content {
+  padding: 1rem 0 3rem 0;
+}
+.hero__button-demo {
+  background: #ff5c5c;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.7rem 1.2rem;
+}
+.hero__button-demo:hover, .hero__button-demo:focus {
+  background-color: #ff8f8f;
+}
+.hero__button-preview {
+  font-size: 0.7rem;
+  background: white;
+  border: 1px solid white;
+  padding: 0.7rem 0.5rem;
+  cursor: pointer;
+}
+.hero__button-preview:hover, .hero__button-preview:focus {
+  border: 1px solid #ff5c5c;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: #3e52a3;
+}/*# sourceMappingURL=main.css.map */
