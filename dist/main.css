@@ -194,7 +194,7 @@ main {
 }
 @media (min-width: 900px) {
   .nav__item:nth-child(3) {
-    padding: 0;
+    padding: 0 1rem;
   }
 }
 .nav__link {
